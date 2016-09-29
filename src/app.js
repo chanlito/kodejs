@@ -1,25 +1,24 @@
-/* npm dependencies */
 import bodyParser from 'koa-bodyparser'
 import error from 'koa-json-error'
+import Io from 'koa-socket'
 import Koa from 'koa'
-/* local dependencies */
+
 import config from './config'
-import io from './socket.io'
-import socket from './middleware/socket'
 
 const app = new Koa()
+const io = new Io()
+const port = config.port
 
-app
-  .use(error())
-  .use(bodyParser())
-  .use(socket())
-  .use(ctx => {
-    ctx.body = 'Welcome'
-  })
+app.use(error())
+app.use(bodyParser())
+app.use(async(ctx, next) => {
+  ctx.io = io
+  await next()
+})
 
 io.attach(app)
-app.listen(config.port, () => {
-  console.log(`Server running on port ${config.port}`)
+app.listen(port, () => {
+  console.log(`Server running on port ${port}`)
 })
 
 export default app
