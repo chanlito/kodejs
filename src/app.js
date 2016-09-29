@@ -3,18 +3,20 @@ import error from 'koa-json-error'
 import Koa from 'koa'
 
 import config from './config'
-import socket from './sockets/index'
-import socketChat from './sockets/chat'
+import sockets from './sockets'
 
 const app = new Koa()
 const port = config.port
 
+/** middleware */
 app.use(error())
 app.use(bodyParser())
 
-socket(app)
-socketChat(app)
+/** sockets */
+sockets.default(app)
+sockets.chat(app)
 
+/** start server */
 app.listen(port, () => {
   console.log(`Server running on port ${port}`)
 })
