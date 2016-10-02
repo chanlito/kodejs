@@ -2,6 +2,7 @@ import http from 'http'
 
 import app from './app'
 import config from './config'
+import db from './utils/db'
 import socketIo from './utils/socket.io'
 
 const port = config.port
