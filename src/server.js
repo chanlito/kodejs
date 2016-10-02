@@ -12,7 +12,7 @@ const server = http.createServer(app.callback())
 socketIo(server)
 
 co(function*() {
-  const sync = yield db.sequelize.sync()
+  const sync = yield db.sequelize.sync({ force: false, logging: false })
   if (sync) {
     server.listen(port, () => {
       console.log(`Server running on port ${port}`)

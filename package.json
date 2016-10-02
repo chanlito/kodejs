@@ -4,7 +4,8 @@
   "description": "A Node.js framework using ECMAScript 2016 (ES7).",
   "main": "index.js",
   "scripts": {
-    "start": "./node_modules/.bin/nodemon index.js"
+    "start": "./node_modules/.bin/nodemon index.js",
+    "dev": "DEBUG=vanilla-es7:* ./node_modules/.bin/nodemon index.js"
   },
   "author": "Chanlito Hem",
   "license": "ISC",
