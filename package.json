@@ -22,10 +22,11 @@
     "koa-compose": "^3.1.0",
     "koa-json-error": "^3.0.1",
     "koa-router": "^7.0.1",
-    "koa-socket": "^4.4.0",
+    "pg": "^6.1.0",
+    "pg-hstore": "^2.3.2",
     "require-directory": "^2.1.1",
-    "socket.io": "^1.4.8",
-    "thinky": "^2.3.6"
+    "sequelize": "^3.24.3",
+    "socket.io": "^1.4.8"
   },
   "devDependencies": {
     "babel-eslint": "^7.0.0",
