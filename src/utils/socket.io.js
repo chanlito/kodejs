@@ -1,7 +1,7 @@
 import debug from 'debug'
 import SocketIo from 'socket.io'
 
-const log = debug('koa-vanilla:utils:socket.io')
+const log = debug('vanilla-es7:utils:socket.io')
 
 export default server => {
   const io = new SocketIo(server)

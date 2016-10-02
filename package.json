@@ -1,5 +1,5 @@
 {
-  "name": "koa-vanilla",
+  "name": "vanilla-es7",
   "version": "1.0.0",
   "description": "A Node.js framework using ECMAScript 2016 (ES7).",
   "main": "index.js",
