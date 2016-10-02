@@ -23,7 +23,8 @@
     "koa-json-error": "^3.0.1",
     "koa-router": "^7.0.1",
     "koa-socket": "^4.4.0",
-    "require-directory": "^2.1.1"
+    "require-directory": "^2.1.1",
+    "thinky": "^2.3.6"
   },
   "devDependencies": {
     "typings": "^1.4.0",
