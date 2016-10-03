@@ -1,4 +1,9 @@
 {
   "name": "vanilla-es7",
-  "dependencies": {}
+  "dependencies": {
+    "koa-router": "registry:npm/koa-router#7.0.1+20160925140624"
+  },
+  "globalDependencies": {
+    "node": "registry:dt/node#6.0.0+20160928143418"
+  }
 }
