@@ -1,25 +1,25 @@
 export default (db, type) => {
-  let users = db.define('users', {
+  let emails = db.define('emails', {
     id: {
       type: type.INTEGER,
       primaryKey: true,
       autoIncrement: true
     },
-    username: {
+    email: {
       type: type.STRING,
       allowNull: false,
       unique: true
     },
-    password: {
-      type: type.STRING,
+    primary: {
+      type: type.BOOLEAN,
       allowNull: false
     }
   }, {
     classMethods: {
       associate: models => {
-        users.hasMany(models.emails)
+        emails.belongsTo(models.users)
       }
     }
   })
-  return users
+  return emails
 }

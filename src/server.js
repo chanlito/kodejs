@@ -3,16 +3,19 @@ import { co } from 'bluebird-co'
 
 import app from './app'
 import config from './config'
-import db from './utils/db'
-import socketIo from './utils/socket.io'
+import db from './lib/db'
+import socketIo from './lib/socket.io'
 
 const port = config.port
 const server = http.createServer(app.callback())
 
-socketIo(server)
+socketIo.use(server)
 
 co(function*() {
-  const sync = yield db.sequelize.sync({ force: false, logging: false })
+  const sync = yield db.sequelize.sync({
+    force: true,
+    logging: false
+  })
   if (sync) {
     server.listen(port, () => {
       console.log(`Server running on port ${port}`)

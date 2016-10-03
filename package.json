@@ -24,6 +24,7 @@
     "koa-compose": "^3.1.0",
     "koa-json-error": "^3.0.1",
     "koa-router": "^7.0.1",
+    "koa-views": "^5.0.2",
     "pg": "^6.1.0",
     "pg-hstore": "^2.3.2",
     "require-directory": "^2.1.1",
