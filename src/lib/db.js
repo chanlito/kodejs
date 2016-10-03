@@ -15,7 +15,7 @@ fs
     return (file.indexOf('.') > 0)
   })
   .forEach((file) => {
-    var model = sequelize.import(path.join(modelsPath, file))
+    let model = sequelize.import(path.join(modelsPath, file))
     db[model.name] = model
   })
 

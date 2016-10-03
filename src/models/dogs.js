@@ -1,25 +1,28 @@
 export default (db, type) => {
-  let users = db.define('users', {
+  let dogs = db.define('dogs', {
     id: {
       type: type.INTEGER,
       primaryKey: true,
       autoIncrement: true
     },
-    username: {
+    name: {
       type: type.STRING,
       allowNull: false,
       unique: true
     },
-    password: {
-      type: type.STRING,
-      allowNull: false
+    description: {
+      type: type.TEXT
+    },
+    image_url: {
+      type: type.STRING
     }
   }, {
     classMethods: {
       associate: models => {
-        users.hasMany(models.emails)
+        // association can be defined here
+        // read more: http://docs.sequelizejs.com/en/latest/docs/associations/
       }
     }
   })
-  return users
+  return dogs
 }
