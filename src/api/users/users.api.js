@@ -5,21 +5,19 @@ export default {
     const log = debug('vanilla-es7:api:users:create')
     const { email, password } = ctx.request.body
     const username = email.split('@')[0].replace(/[^a-zA-Z0-9]/g, '')
-    log('username', username)
     const t = await ctx.db.sequelize.transaction()
+    let options = {
+      transaction: t
+    }
     try {
       const user = await ctx.db.users.create({
         username: username,
         password: password
-      }, {
-        transaction: t
-      })
+      }, options)
       const userEmail = await ctx.db.emails.create({
         email: email,
         primary: true
-      }, {
-        transaction: t
-      })
+      }, options)
       t.commit()
       ctx.body = {
         id: user.id,
@@ -27,12 +25,10 @@ export default {
         email: userEmail.email
       }
     } catch (e) {
-      log('Error transaction', e)
+      log('Error', e)
       t.rollback()
       ctx.status = 400
-      ctx.body = {
-        message: 'Failed to create user'
-      }
+      ctx.body = { message: 'Failed to create user' }
     }
   },
   list: async function (ctx) {

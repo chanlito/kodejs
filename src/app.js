@@ -7,9 +7,10 @@ import router from './lib/router'
 
 const app = new Koa()
 
-app.use(error())
-app.use(bodyParser())
-app.use(db())
+app
+  .use(error())
+  .use(bodyParser())
+  .use(db())
 
 router.use(app)
 
