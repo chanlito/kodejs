@@ -1,9 +1,12 @@
 {
   "name": "vanilla-es7",
   "dependencies": {
+    "koa": "registry:npm/koa#2.0.0+20160927021339",
     "koa-router": "registry:npm/koa-router#7.0.1+20160925140624"
   },
   "globalDependencies": {
+    "koa-bodyparser": "registry:dt/koa-bodyparser#3.0.0+20160928122441",
+    "koa-hbs": "registry:dt/koa-hbs#2.0.0+20160812083634",
     "node": "registry:dt/node#6.0.0+20160928143418"
   }
 }

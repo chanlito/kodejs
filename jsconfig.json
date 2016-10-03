@@ -6,9 +6,6 @@
 		"module": "es6",
 		"allowSyntheticDefaultImports": true
 	},
-  "files": [
-    "src/"
-  ],
 	"exclude": [
 		"node_modules",
 		"bower_components",
