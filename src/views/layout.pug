@@ -1,6 +1,8 @@
 doctype html
 html
-  head
-    title= title
+  include includes/header
   body
-    block content
+    include includes/navbar
+    .container
+      block content
+    include includes/scripts

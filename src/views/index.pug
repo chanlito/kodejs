@@ -2,4 +2,38 @@ extends layout
 
 block content
   title= title
-  h1 Welcome to #{title}
+  .jumbotron
+    h1.text-center #{title}
+    p.text-center.
+      A Node.js framework featuring ECMAScript 2016 (ES7).
+    br
+    p.text-center
+      a(href="#").btn.btn-success.btn-lg View examples
+  .col-md-4
+    h2 Motivation
+    p.text-justify.
+      The first step of application development – no matter what type of application you plan on writing
+      – is always the same: get an initial version up and running.
+      While it is possible to start from a blank editor and build out a scalable web application
+      in the appropriate pattern for your language and selected tool chain,
+      oftentimes there is a lot of tedious setup work that needs to take place before your application functions properly.
+  .col-md-4
+    h2 Why Vanilla ES7?
+    p.text-justify.
+      Vanilla ES7 is a Node.js framework is built to help developer get started and be productive quickly.
+    p.
+      Vanilla ES7 uses the following frameworks and libraries:
+    ul
+      li
+        a(href="https://ponyfoo.com/articles/understanding-javascript-async-await") Async/Await
+      li
+        a(href="https://github.com/koajs/koa/tree/v2.x") Koa
+      li
+        a(href="https://pugjs.org/api/getting-started.html") Pug
+      li
+        a(href="http://docs.sequelizejs.com/en/v3/") Sequelize
+      li
+        a(href="http://socket.io/") Socket.io
+  .col-md-4
+    h2 Who is it for?
+    p.text-justify Anybody.
