@@ -6,23 +6,24 @@ import serve from 'koa-static'
 import Koa from 'koa'
 import Pug from 'koa-pug'
 
-import config from './config'
-import db from './middleware/db'
+import appConfig from '../config/app'
+import db from './lib/db'
 import router from './lib/router'
 
 const app = new Koa()
-const env = config.environment
 const pug = new Pug({
   viewPath: './src/views',
-  debug: env === 'development',
-  noCache: env === 'development'
+  debug: appConfig.env === 'development',
+  noCache: appConfig.env === 'development'
 })
+
+app.context.db = db
+app.env = appConfig.env
 
 app
   .use(error())
+  .use(convert(serve(path.join(__dirname, '../public'))))
   .use(bodyParser())
-  .use(db())
-  .use(convert(serve(path.join(__dirname, '/public'))))
 
 pug.use(app)
 router.use(app)

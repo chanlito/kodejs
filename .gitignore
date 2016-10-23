@@ -3,6 +3,7 @@
 .env
 .vs_code/
 node_modules/
+semantic/
 typings/
 
 # Logs #

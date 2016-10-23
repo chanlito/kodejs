@@ -1,7 +1,7 @@
 import fs from 'fs'
 import path from 'path'
 
-const routesPath = path.join(__dirname, '../routes')
+const routesPath = path.join(__dirname, '../../routes')
 
 export default {
   use: app => {

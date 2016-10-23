@@ -2,24 +2,22 @@ import fs from 'fs'
 import path from 'path'
 import Sequelize from 'sequelize'
 
-import config from '../config'
+import dbConfig from '../../config/database'
 
 const db = {}
-const { database, username, password, options } = config.db
-const modelsPath = path.join(__dirname, '../models/')
+const { database, username, password, options } = dbConfig
+const modelsPath = path.join(__dirname, '../../models')
 const sequelize = new Sequelize(database, username, password, options)
 
 fs
   .readdirSync(modelsPath)
-  .filter((file) => {
-    return (file.indexOf('.') > 0)
-  })
-  .forEach((file) => {
-    let model = sequelize.import(path.join(modelsPath, file))
+  .filter(file => file.indexOf('.') > 0)
+  .forEach(file => {
+    const model = sequelize.import(path.join(modelsPath, file))
     db[model.name] = model
   })
 
-Object.keys(db).forEach((modelName) => {
+Object.keys(db).forEach(modelName => {
   if ('associate' in db[modelName]) {
     db[modelName].associate(db)
   }

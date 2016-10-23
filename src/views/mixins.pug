@@ -1,0 +1,9 @@
+mixin csrf(csrf)
+  input(hidden name="_csrf" value=csrf)
+
+mixin errors(errors)
+  if errors
+    .alert.alert-danger(role="alert")
+      ul
+        each error in errors
+          li= error.message

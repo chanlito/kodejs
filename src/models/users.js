@@ -1,20 +1,18 @@
 export default (db, type) => {
-  let dogs = db.define('dogs', {
+  let users = db.define('users', {
     id: {
-      type: type.INTEGER,
+      type: type.INTEGER.UNSIGNED,
       primaryKey: true,
       autoIncrement: true
     },
-    name: {
-      type: type.STRING,
+    username: {
+      type: type.STRING(191), // NOTE: unique STRING is max 191 when using with uft8mb4
       allowNull: false,
       unique: true
     },
-    description: {
-      type: type.TEXT
-    },
-    image_url: {
-      type: type.STRING
+    password: {
+      type: type.STRING,
+      allowNull: false
     }
   }, {
     classMethods: {
@@ -24,5 +22,5 @@ export default (db, type) => {
       }
     }
   })
-  return dogs
+  return users
 }
