@@ -1,4 +1,4 @@
 require('dotenv').config()
-require('babel-register')
 require('babel-polyfill')
+require('babel-register')
 require('./src/bootstrap/server')

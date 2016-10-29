@@ -1,0 +1,11 @@
+{
+  "definitions": [{
+    "prefix": "",
+    "routes": [{
+      "method": "GET",
+      "path": "/",
+      "middleware": [],
+      "callback": "Home.index"
+    }]
+  }]
+}

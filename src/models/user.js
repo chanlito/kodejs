@@ -1,5 +1,5 @@
 export default (db, type) => {
-  let users = db.define('users', {
+  let user = db.define('user', {
     id: {
       type: type.INTEGER.UNSIGNED,
       primaryKey: true,
@@ -15,6 +15,10 @@ export default (db, type) => {
       allowNull: false
     }
   }, {
+    name: {
+      singular: 'user',
+      plural: 'users'
+    },
     classMethods: {
       associate: models => {
         // association can be defined here
@@ -22,5 +26,5 @@ export default (db, type) => {
       }
     }
   })
-  return users
+  return user
 }
