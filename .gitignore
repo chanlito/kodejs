@@ -1,7 +1,7 @@
 # Project specific #
 ####################
 .env
-.vs_code/
+.vscode/
 node_modules/
 typings/
 
