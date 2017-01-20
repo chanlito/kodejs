@@ -1,5 +1,5 @@
 export default {
-  async index (ctx) {
+  async index(ctx) {
     ctx.render('index', { title: 'KodeJS' })
   }
 }

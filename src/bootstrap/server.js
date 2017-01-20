@@ -1,30 +1,29 @@
-import chalk from 'chalk'
-import co from 'co'
+/**
+ * Module dependencies
+ */
 import http from 'http'
 
+/**
+ * Load application configuration and dependencies
+ */
 import app from './app'
-import appConfig from '../config/app'
+import { port } from '../config/app'
 import db from './database'
 import websocket from './websocket'
 
-const red = chalk.bold.red
-const cyan = chalk.bold.cyan
 const log = console.log
-const port = appConfig.port
+/**
+ * Initialize application server
+ */
 const server = http.createServer(app.callback())
 
-websocket.use(server)
+/**
+ * Bind socket io to the application and initialize it with the server
+ */
+websocket.bindTo(app, server)
 
-co(function* () {
-  const sync = yield db.sync({
-    force: true,
-    logging: console.log
-  })
-  if (sync) {
-    server.listen(port, () => console.log(`Server running on port ${port}`))
-  }
-}).catch(e => {
-  log(`${cyan('[Database Error]:')} ${red('Unable to connect with the database.', e.message)}`)
-})
+db.sync()
+  .then(() => server.listen(port, () => log(`Server running on port ${port}`)))
+  .catch(e => log('Unable to start server.', e))
 
 export default server

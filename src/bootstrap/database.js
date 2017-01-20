@@ -1,20 +1,37 @@
+/**
+ * Module dependencies
+ */
 import fs from 'fs'
 import path from 'path'
 import Sequelize from 'sequelize'
 
-import dbConfig from '../config/database'
+/**
+ * Load database configuration
+ */
+import { database, username, password, options } from '../config/database'
 
-const { database, username, password, options } = dbConfig
-const modelsPath = path.join(__dirname, '../models')
+/**
+ * Start database instance
+ */
 const db = new Sequelize(database, username, password, options)
-
 const models = db.models
 
+/**
+ * Locate models directory
+ */
+const modelsPath = path.join(__dirname, '../models')
+
+/**
+ * Load application models
+ */
 fs.readdirSync(modelsPath)
   .filter(file => file.indexOf('.') > 0)
-  .forEach(file => db.import(path.join(modelsPath, file)))
+  .map(file => db.import(path.join(modelsPath, file)))
 
-Object.keys(models).forEach(modelName => {
+/**
+ * Setup models relationship
+ */
+Object.keys(models).map(modelName => {
   if ('associate' in models[modelName]) {
     models[modelName].associate(models)
   }
