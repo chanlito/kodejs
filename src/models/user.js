@@ -1,38 +1,38 @@
-import shortid from 'shortid'
-
-export default (db, type) => {
-  let user = db.define('user', {
+export default (db, { INTEGER, STRING }) => {
+  const attributes = {
     id: {
-      type: type.INTEGER.UNSIGNED,
+      type: INTEGER.UNSIGNED,
       primaryKey: true,
       autoIncrement: true
     },
     sid: {
-      type: type.STRING(191),
+      type: STRING(191),
       allowNull: false,
-      unique: true,
-      defaultValue: shortid.generate()
+      unique: true
     },
     username: {
-      type: type.STRING(191), // NOTE: unique STRING is max 191 when using with uft8mb4
+      type: STRING(191), // NOTE: unique STRING is max 191 when using with uft8mb4
       allowNull: false,
       unique: true
     },
     password: {
-      type: type.STRING,
+      type: STRING,
       allowNull: false
     }
-  }, {
+  }
+
+  const options = {
     name: {
       singular: 'user',
       plural: 'users'
     },
     classMethods: {
-      associate: models => {
+      associate(models) {
         // association can be defined here
         // read more: http://docs.sequelizejs.com/en/latest/docs/associations/
       }
     }
-  })
-  return user
+  }
+
+  return db.define('User', attributes, options)
 }

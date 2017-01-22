@@ -2,7 +2,7 @@
  * Module dependencies
  */
 import Koa from 'koa'
-import bodyParser from 'koa-bodyparser'
+import bodyParser from 'koa-better-body'
 import convert from 'koa-convert'
 import error from 'koa-json-error'
 import logger from 'koa-logger'
@@ -14,9 +14,13 @@ import path from 'path'
 /**
  * Load application configuration and dependencies
  */
-import { env, pug as pugConfig } from '../config/app'
+import {
+  env,
+  pug as pugConfig,
+  bodyParser as bodyParserConfig
+} from '../config/app'
 import db from './database'
-import router from './router'
+import setupRouter from './router'
 
 /**
  * Initialize modules
@@ -36,13 +40,13 @@ app.env = env
 app.use(error())
 app.use(logger())
 app.use(convert(serve(path.resolve(__dirname, '../../public'))))
-app.use(bodyParser())
+app.use(convert(bodyParser(bodyParserConfig)))
 app.use(respond())
 
 /**
  * Setup template engine & routing
  */
 pug.use(app)
-router.use(app)
+setupRouter(app)
 
 export default app

@@ -1,9 +1,9 @@
-const host = process.env.DB_HOST || 'localhost'
-const port = process.env.DB_PORT || 3306
+const host = process.env.DB_HOST
+const port = process.env.DB_PORT
 
-export const database = process.env.DB_DATABASE || 'test'
-export const username = process.env.DB_USERNAME || 'root'
-export const password = process.env.DB_PASSWORD || ''
+export const database = process.env.DB_DATABASE
+export const username = process.env.DB_USERNAME
+export const password = process.env.DB_PASSWORD
 export const options = {
   host,
   port,
