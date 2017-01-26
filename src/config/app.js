@@ -1,7 +1,7 @@
 import formidable from 'formidable'
 
 const form = new formidable.IncomingForm({
-  uploadDir: '/public/uploads',
+  uploadDir: './public/uploads',
   keepExtensions: 'true'
 })
 
@@ -24,7 +24,7 @@ export const bodyParser = {
   jsonLimit: '250kb',
   bufferLimit: '2mb',
   jsonStrict: true, // When set to true, JSON parser will only accept arrays and objects.
-  multipart: false,
+  multipart: true,
   IncomingForm: form,
   querystring: require('qs')
 }

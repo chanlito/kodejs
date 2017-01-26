@@ -1,7 +1,12 @@
-import apiRouter from '../app/routes/api'
-import webRouter from '../app/routes/web'
+import Router from 'koa-router'
+import routeDefinitions from '../config/routes'
 
 export default app => {
-  app.use(apiRouter.routes()).use(apiRouter.allowedMethods())
-  app.use(webRouter.routes()).use(webRouter.allowedMethods())
+  routeDefinitions.map(({ prefix, routes }) => {
+    const router = new Router({ prefix })
+    routes.map(({ method, path = '/', api, middleware = [] }) => {
+      router[method.toLowerCase()](path, ...middleware, api)
+    })
+    app.use(router.routes()).use(router.allowedMethods())
+  })
 }

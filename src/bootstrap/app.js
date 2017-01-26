@@ -39,7 +39,7 @@ app.env = env
  */
 app.use(error())
 app.use(logger())
-app.use(convert(serve(path.resolve(__dirname, '../../public'))))
+app.use(convert(serve(path.resolve('.', './public'))))
 app.use(convert(bodyParser(bodyParserConfig)))
 app.use(respond())
 
