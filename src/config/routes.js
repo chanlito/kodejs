@@ -1,6 +1,12 @@
+/**
+ * Load application API handlers
+ */
 import { home as renderHome } from '../api/web'
 import { uploadImage } from '../api/uploads'
 
+/**
+ * Define the application routes
+ */
 const routeDefinitions = [{
   prefix: '/',
   routes: [{
@@ -17,4 +23,7 @@ const routeDefinitions = [{
   }]
 }]
 
+/**
+ * Make it available to the application router
+ */
 export default routeDefinitions

@@ -1,15 +1,3 @@
-import formidable from 'formidable'
-
-const form = new formidable.IncomingForm({
-  uploadDir: './public/uploads',
-  keepExtensions: 'true'
-})
-
-form.on('progress', function (bytesReceived, bytesExpected) {
-  console.log('bytesReceived', bytesReceived)
-  console.log('bytesExpected', bytesExpected)
-})
-
 export const env = process.env.NODE_ENV
 export const port = process.env.PORT
 export const pug = {
@@ -25,6 +13,6 @@ export const bodyParser = {
   bufferLimit: '2mb',
   jsonStrict: true, // When set to true, JSON parser will only accept arrays and objects.
   multipart: true,
-  IncomingForm: form,
+  IncomingForm: require('./misc').form,
   querystring: require('qs')
 }

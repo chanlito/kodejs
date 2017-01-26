@@ -9,7 +9,7 @@ import http from 'http'
 import app from './app'
 import { port } from '../config/app'
 import db from './database'
-import websocket from './websocket'
+import setupSocketIo from './socket.io'
 
 const log = console.log
 /**
@@ -20,7 +20,7 @@ const server = http.createServer(app.callback())
 /**
  * Bind socket io to the application and initialize it with the server
  */
-websocket.bindTo(app, server)
+setupSocketIo(app, server)
 
 db.sync()
   .then(() => server.listen(port, () => log(`Server running on port ${port}`)))
