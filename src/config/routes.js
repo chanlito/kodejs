@@ -1,8 +1,8 @@
 /**
  * Load application API handlers
  */
-import { home as renderHome } from '../api/web'
-import { uploadImage } from '../api/uploads'
+import web from '../api/web'
+import uploads from '../api/uploads'
 
 /**
  * Define the application routes
@@ -12,14 +12,14 @@ const routeDefinitions = [{
   routes: [{
     method: 'GET',
     path: '/',
-    api: renderHome
+    api: web.index
   }]
 }, {
   prefix: '/v1/uploads',
   routes: [{
     method: 'POST',
     path: '/',
-    api: uploadImage
+    api: uploads.uploadImage
   }]
 }]
 

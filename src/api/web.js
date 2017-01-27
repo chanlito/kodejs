@@ -1,3 +1,5 @@
-export const home = async ctx => {
-  ctx.render('index', { title: 'KodeJS' })
+export default {
+  async index(ctx) {
+    ctx.render('index', { title: 'KodeJS' })
+  }
 }
