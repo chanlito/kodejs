@@ -53,24 +53,33 @@ const fileFilter = (req, file, cb) => {
 
 const multerUpload = multer({ storage, fileFilter, limits })
 
+async function isMultiPart(ctx, next) {
+  if (ctx.request.type !== 'multipart/form-data') {
+    ctx.fail(`Only request type of 'multipart/form-data' is allowed`)
+  }
+  await next()
+}
+
 async function singleUpload(ctx, next) {
   try {
     await multerUpload.single('file')(ctx)
-    await next()
-  } catch ({ code, message }) {
-    ctx.status = 400
-    ctx.body = { code, message }
+    const { file } = ctx.req
+    if (!file) ctx.fail(`A file is required`)
+  } catch ({ code: reason, message }) {
+    ctx.fail({ reason, message, supportedFileTypes })
   }
+  await next()
 }
 
 async function multiUpload(ctx, next) {
   try {
     await multerUpload.array('file')(ctx)
-    await next()
-  } catch ({ code, message }) {
-    ctx.status = 400
-    ctx.body = { code, message }
+    const { files } = ctx.req
+    if (!files || !files.length) ctx.fail(`One or more files are required`)
+  } catch ({ code: reason, message }) {
+    ctx.fail({ reason, message, supportedFileTypes })
   }
+  await next()
 }
 
-export { singleUpload, multiUpload }
+export { isMultiPart, singleUpload, multiUpload }

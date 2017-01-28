@@ -4,9 +4,7 @@
 import Koa from 'koa'
 import bodyParser from 'koa-bodyparser'
 import convert from 'koa-convert'
-import error from 'koa-json-error'
 import logger from 'koa-logger'
-import respond from 'koa-respond'
 import serve from 'koa-static'
 import Pug from 'koa-pug'
 import path from 'path'
@@ -21,6 +19,8 @@ import {
 } from '../config/app'
 import db from './database'
 import setupRouter from './router'
+import errorHandler from './errorHandler'
+import response from './response'
 
 /**
  * Initialize modules
@@ -37,11 +37,11 @@ app.env = env
 /**
  * Add additional middleware to the application
  */
-app.use(error())
+app.use(errorHandler())
 app.use(logger())
 app.use(convert(serve(path.resolve('.', './public'))))
 app.use(convert(bodyParser(bodyParserConfig)))
-app.use(respond())
+app.use(response())
 
 /**
  * Setup template engine & routing

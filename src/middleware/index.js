@@ -1,3 +1,3 @@
-import { singleUpload, multiUpload } from './upload'
+import { isMultiPart, singleUpload, multiUpload } from './upload'
 
-export { singleUpload, multiUpload }
+export { isMultiPart, singleUpload, multiUpload }

@@ -1,4 +1,12 @@
-export const uploader = async ctx => {
-  const { file, files } = ctx.req
-  ctx.body = { file, files }
+import gm from 'gm'
+import Promise from 'bluebird'
+
+Promise.promisifyAll(gm.prototype)
+
+export const singleUploader = async ctx => {
+
+}
+
+export const multiUploader = async ctx => {
+
 }
