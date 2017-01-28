@@ -12,7 +12,10 @@ export const bodyParser = {
   jsonLimit: '250kb',
   bufferLimit: '2mb',
   jsonStrict: true, // When set to true, JSON parser will only accept arrays and objects.
-  multipart: true,
-  IncomingForm: require('./misc').form,
+  // multipart: false,
+  // IncomingForm: require('./misc').form,
   querystring: require('qs')
+}
+export const multer = {
+
 }

@@ -6,13 +6,14 @@ import Router from 'koa-router'
 /**
  * Load applications route definitions
  */
-import routeDefinitions from '../config/routes'
+import apiRoutes from '../routes/api'
+import webRoutes from '../routes/web'
 
 /**
  * Setup application routers according to the route definitions
  */
 export default app => {
-  routeDefinitions.map(({ prefix, routes }) => {
+  [...apiRoutes, ...webRoutes].map(({ prefix, routes }) => {
     const router = new Router({ prefix })
     routes.map(({ method, path = '/', api, middleware = [] }) => {
       router[method.toLowerCase()](path, ...middleware, api)
