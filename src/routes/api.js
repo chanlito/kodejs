@@ -1,12 +1,12 @@
 /**
  * Load application API handlers
  */
-import uploads from '../api/uploads'
+import { uploader } from '../api/uploads'
 
 /**
  * Load application middleware
  */
-import { singleUpload, multiUpload } from '../middleware'
+import { singleUpload, multiUpload } from '../middleware/index'
 
 /**
  * Define the application routes
@@ -16,12 +16,12 @@ export default [{
   routes: [{
     method: 'POST',
     path: '/',
-    api: uploads.uploadImage,
+    api: uploader,
     middleware: [singleUpload]
   }, {
     method: 'POST',
     path: '/bulk',
-    api: uploads.uploadImage,
+    api: uploader,
     middleware: [multiUpload]
   }]
 }]

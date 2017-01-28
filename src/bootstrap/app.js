@@ -2,7 +2,6 @@
  * Module dependencies
  */
 import Koa from 'koa'
-// import bodyParser from 'koa-better-body'
 import bodyParser from 'koa-bodyparser'
 import convert from 'koa-convert'
 import error from 'koa-json-error'
