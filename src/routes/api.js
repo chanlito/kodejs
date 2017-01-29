@@ -1,7 +1,7 @@
 /**
  * Load application API handlers
  */
-import { singleUploader, multiUploader } from '../api/uploads'
+import { singleImageUploader, multiImageUploader } from '../api/uploads'
 
 /**
  * Load application middleware
@@ -15,13 +15,13 @@ export default [{
   prefix: '/v1/uploads',
   routes: [{
     method: 'POST',
-    path: '/',
-    api: singleUploader,
+    path: '/images',
+    api: singleImageUploader,
     middleware: [isMultiPart, singleUpload]
   }, {
     method: 'POST',
-    path: '/bulk',
-    api: multiUploader,
+    path: '/images/bulk',
+    api: multiImageUploader,
     middleware: [isMultiPart, multiUpload]
   }]
 }]

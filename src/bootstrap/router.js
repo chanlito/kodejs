@@ -12,12 +12,10 @@ import webRoutes from '../routes/web'
 /**
  * Setup application routers according to the route definitions
  */
-export default app => {
-  [...apiRoutes, ...webRoutes].map(({ prefix, routes }) => {
-    const router = new Router({ prefix })
-    routes.map(({ method, path = '/', api, middleware = [] }) => {
-      router[method.toLowerCase()](path, ...middleware, api)
-    })
-    app.use(router.routes()).use(router.allowedMethods())
+export default app => [...apiRoutes, ...webRoutes].map(({ prefix, routes }) => {
+  const router = new Router({ prefix })
+  routes.map(({ method, path = '/', api, middleware = [] }) => {
+    router[method.toLowerCase()](path, ...middleware, api)
   })
-}
+  app.use(router.routes()).use(router.allowedMethods())
+})

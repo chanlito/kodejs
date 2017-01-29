@@ -19,7 +19,7 @@ import {
 } from '../config/app'
 import db from './database'
 import setupRouter from './router'
-import errorHandler from './errorHandler'
+import error from './error'
 import response from './response'
 
 /**
@@ -37,10 +37,10 @@ app.env = env
 /**
  * Add additional middleware to the application
  */
-app.use(errorHandler())
+app.use(error())
 app.use(logger())
 app.use(convert(serve(path.resolve('.', './public'))))
-app.use(convert(bodyParser(bodyParserConfig)))
+app.use(bodyParser(bodyParserConfig))
 app.use(response())
 
 /**
