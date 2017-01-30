@@ -3,15 +3,20 @@
   "version": "1.0.0",
   "description": "Koa + Node.js = KodeJS is a web application framework.",
   "main": "index.js",
+  "engines": {
+    "node": ">=7.0.0",
+    "npm": ">=4.0.0"
+  },
   "scripts": {
-    "build": "npm run clean && mkdir -p dist && babel src -D -d dist",
+    "build": "npm run clean && mkdir -p dist && babel src -D -d dist --source-maps inline",
     "clean": "rm -rf dist",
-    "dev": "nodemon src/index.js",
+    "dev": "nodemon src/index.js --exec babel-node",
     "start": "node dist/index.js"
   },
-  "author": "Bruce Hem",
+  "author": "Bruce Hem <bruce.hem@pathmazing.com>",
   "license": "MIT",
   "dependencies": {
+    "babel-runtime": "^6.22.0",
     "bluebird": "^3.4.7",
     "co": "^4.6.0",
     "debug": "^2.6.0",
@@ -40,8 +45,9 @@
     "babel-core": "^6.22.1",
     "babel-eslint": "^7.0.0",
     "babel-plugin-transform-object-rest-spread": "^6.22.0",
+    "babel-plugin-transform-runtime": "^6.22.0",
     "babel-polyfill": "^6.20.0",
-    "babel-preset-latest": "^6.16.0",
+    "babel-preset-latest-minimal": "^1.1.2",
     "babel-register": "^6.18.0",
     "eslint": "^3.7.0",
     "eslint-config-standard": "^6.2.0",
