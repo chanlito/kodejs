@@ -6,8 +6,8 @@ import Router from 'koa-router'
 /**
  * Load applications route definitions
  */
-import apiRoutes from '../routes/api'
-import webRoutes from '../routes/web'
+import apiRoutes from '../app/routes/api'
+import webRoutes from '../app/routes/web'
 
 /**
  * Setup application routers according to the route definitions

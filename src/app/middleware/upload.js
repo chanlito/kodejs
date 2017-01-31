@@ -6,7 +6,7 @@ import multer from 'koa-multer'
 import uuidV4 from 'uuid/v4'
 
 const storage = multer.diskStorage({
-  destination: (req, file, cb) => cb(null, './public/uploads'),
+  destination: (req, file, cb) => cb(null, './src/public/uploads'),
   filename: (req, file, cb) => cb(null, `${uuidV4().replace(/-/g, '')}.${extension(file.mimetype)}`)
 })
 

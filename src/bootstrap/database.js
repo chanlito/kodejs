@@ -19,7 +19,7 @@ const models = db.models
 /**
  * Locate models directory
  */
-const modelsPath = path.join(__dirname, '../models')
+const modelsPath = path.join(__dirname, '../app/models')
 
 /**
  * Load application models
