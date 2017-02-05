@@ -17,15 +17,8 @@ import {
  */
 export default [{
   prefix: '/v1/uploads',
-  routes: [{
-    method: 'POST',
-    path: '/images',
-    api: singleImageUploader,
-    middleware: [isMultiPart, singleUpload]
-  }, {
-    method: 'POST',
-    path: '/images/bulk',
-    api: multiImageUploader,
-    middleware: [isMultiPart, multiUpload]
-  }]
+  routes: [
+    { method: 'post', path: '/images', api: singleImageUploader, middleware: [isMultiPart, singleUpload] },
+    { method: 'post', path: '/images/bulk', api: multiImageUploader, middleware: [isMultiPart, multiUpload] }
+  ]
 }]
