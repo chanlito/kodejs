@@ -14,13 +14,15 @@ export const options = {
     logging: console.log
   },
   define: {
-    underscored: true,
+    // underscored: false,
     freezeTableName: true,
     charset: 'utf8mb4',
     collate: 'utf8mb4_general_ci',
-    createdAt: 'created_date',
-    updatedAt: 'updated_date',
-    deletedAt: 'deleted_date',
+    paranoid: true,
+    // version: true,
+    // createdAt: 'created_date',
+    // updatedAt: 'updated_date',
+    // deletedAt: 'deleted_date',
     timestamps: true
   }
 }

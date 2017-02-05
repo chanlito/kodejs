@@ -1,7 +1,7 @@
 export const env = process.env.NODE_ENV
 export const port = process.env.PORT
 export const pug = {
-  viewPath: './src/views',
+  viewPath: './src/resource/views',
   debug: env === 'development',
   noCache: env === 'development'
 }

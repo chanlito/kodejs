@@ -5,8 +5,9 @@
 node_modules/
 typings/
 dist/
-public/uploads/*
-!public/uploads/.gitkeep
+src/resource/public/doc/
+src/resource/public/uploads/*
+!src/resource/public/uploads/.gitkeep
 
 # Logs #
 ########

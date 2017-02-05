@@ -1,12 +1,16 @@
 /**
  * Load application API handlers
  */
-import { singleImageUploader, multiImageUploader } from '../api/uploads'
+import { singleImageUploader, multiImageUploader } from './uploads.api'
 
 /**
  * Load application middleware
  */
-import { isMultiPart, singleUpload, multiUpload } from '../middleware/index'
+import {
+  isMultiPart,
+  multiUpload,
+  singleUpload
+} from './uploads.middleware.js'
 
 /**
  * Define the application routes
@@ -25,4 +29,3 @@ export default [{
     middleware: [isMultiPart, multiUpload]
   }]
 }]
-

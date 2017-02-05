@@ -22,7 +22,7 @@ const server = http.createServer(app.callback())
  */
 setupSocketIo(app, server)
 
-db.sync()
+db.sync({ force: true })
   .then(() => server.listen(port, () => log(`Server running on port ${port}`)))
   .catch(e => log('Unable to start server.', e))
 

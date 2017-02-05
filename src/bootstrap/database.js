@@ -32,8 +32,8 @@ fs.readdirSync(modelsPath)
  * Setup models relationship
  */
 Object.keys(models).map(modelName => {
-  if ('associate' in models[modelName]) {
-    models[modelName].associate(models)
+  if ('defineRelationship' in models[modelName]) {
+    models[modelName].defineRelationship(models)
   }
 })
 
