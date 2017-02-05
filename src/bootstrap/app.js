@@ -2,7 +2,6 @@
  * Module dependencies
  */
 import bodyParser from 'koa-bodyparser'
-import convert from 'koa-convert'
 import Koa from 'koa'
 import logger from 'koa-logger'
 import path from 'path'
@@ -40,7 +39,7 @@ app.env = env
  */
 app.use(error())
 app.use(logger())
-app.use(convert(serve(path.resolve('.', './src/resource/public'))))
+app.use(serve(path.resolve('.', './src/resource/public')))
 app.use(bodyParser(bodyParserConfig))
 app.use(response())
 app.use(requestValidator())
